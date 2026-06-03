@@ -34,6 +34,17 @@ npm run test:coverage    # avec rapport de couverture
 | GET     | `/workouts/:id`   | Une seance (404 si absente)          |
 | POST    | `/workouts`       | Cree une seance (400 si `type` manque) |
 
+## Deploiement Render
+Le workflow `.github/workflows/deploy-render.yml` deploye l'API sur Render lors d'un push sur `master`, ou manuellement via `workflow_dispatch`.
+
+Configuration GitHub requise dans le repo `fittrack-api` :
+- secret `RENDER_API_KEY`
+- variable `RENDER_SERVICE_ID`
+- variable optionnelle `RENDER_HEALTH_URL`
+
+Si `RENDER_HEALTH_URL` n'est pas definie, le workflow verifie par defaut :
+- `https://fittrack-api.onrender.com/health`
+
 ## Structure
 ```
 src/
